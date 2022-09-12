@@ -29,17 +29,14 @@ public class NettyServer {
                             }
                         });
                     }
-                }).bind(1000).addListener(new GenericFutureListener<Future<? super Void>>() {
-                    @Override
-                    public void operationComplete(Future<? super Void> future) throws Exception {
-                        if(future.isSuccess()){
-                            System.out.println("端口绑定成功!");
-                        }else {
-                            System.out.println("端口绑定失败!");
-
-                        }
+                }).bind(8000).addListener(future -> {
+                    if(future.isSuccess()){
+                        System.out.println("端口绑定成功!");
+                    }else {
+                        System.out.println("端口绑定失败!");
 
                     }
+
                 });
     }
 }
